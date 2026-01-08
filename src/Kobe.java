@@ -23,7 +23,7 @@ public class Kobe {
     public Kobe(int pXpos, int pYpos) {
         xpos = pXpos;
         ypos = pYpos;
-        dx =1;
+        dx =2;
         dy =0;
         width = 80;
         height = 120;
