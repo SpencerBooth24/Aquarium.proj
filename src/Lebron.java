@@ -28,8 +28,8 @@ public class Lebron {
         ypos = pYpos;
         dx =1;
         dy =0;
-        width = 80;
-        height = 120;
+        width = 160;
+        height = 240;
         isAlive = true;
  
     } // constructor

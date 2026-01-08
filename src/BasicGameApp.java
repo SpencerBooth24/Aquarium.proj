@@ -27,6 +27,7 @@ public class BasicGameApp implements Runnable {
    //Variable Definition Section
    //Declare the variables used in the program 
    //You can set their initial values too
+
    
    //Sets the width and height of the program window
 	final int WIDTH = 1000;
@@ -38,13 +39,19 @@ public class BasicGameApp implements Runnable {
    public JPanel panel;
    
 	public BufferStrategy bufferStrategy;
+    public Image ballPic;
+    public Image hoopPic;
 	public Image bronPic;
     public Image jordanPic;
+    public Image kobePic;
 
    //Declare the objects used in the program
    //These are things that are made up of more than one variable type
-	private Lebron bron;
+    private Ball ball;
+	private Hoop hoop;
+    private Lebron bron;
     private Jordan jordan;
+    private Kobe kobe;
 
 
    // Main method definition
@@ -64,11 +71,19 @@ public class BasicGameApp implements Runnable {
       setUpGraphics();
        
       //variable and objects
-      //create (construct) the objects needed for the game and load up 
+      //create (construct) the objects needed for the game and load up
+        ballPic = Toolkit.getDefaultToolkit().getImage("bron.png"); //load the picture
+        ball = new Ball(10,100);
+        hoopPic = Toolkit.getDefaultToolkit().getImage("hoop.webp"); //load the picture
+        hoop = new Hoop(10,100);
+
+
 		bronPic = Toolkit.getDefaultToolkit().getImage("bron.png"); //load the picture
 		bron = new Lebron(10,100);
         jordanPic = Toolkit.getDefaultToolkit().getImage("jordan.png");
         jordan = new Jordan(10,100);
+        kobePic = Toolkit.getDefaultToolkit().getImage("kobe.png");
+        kobe = new Kobe(10,100);
 
 
 	}// BasicGameApp()
@@ -96,8 +111,11 @@ public class BasicGameApp implements Runnable {
 	public void moveThings()
 	{
       //calls the move( ) code in the objects
+        ball.move();
+        hoop.move();
 		bron.move();
         jordan.move();
+        kobe.move();
 
 	}
 	
@@ -148,8 +166,12 @@ public class BasicGameApp implements Runnable {
 		g.clearRect(0, 0, WIDTH, HEIGHT);
 
       //draw the image of the bron
+        g.drawImage(ballPic,500,350,ball.width,ball.height,null);
+        g.drawImage(hoopPic,500,200,hoop.width,hoop.height,null);
 		g.drawImage(bronPic, 100, 500, bron.width, bron.height, null);
         g.drawImage(jordanPic,400,500,jordan.width,jordan.height,null);
+        g.drawImage(kobePic,700,500,kobe.width, kobe.height, null);
+
 
 		g.dispose();
 
