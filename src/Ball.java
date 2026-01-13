@@ -1,3 +1,5 @@
+import java.awt.*;
+
 public class Ball {
 
     //VARIABLE DECLARATION SECTION
@@ -10,7 +12,8 @@ public class Ball {
     public int width;
     public int height;
     public boolean isAlive;            //a boolean to denote if the hero is alive or dead.
-
+    public Rectangle hitbox;
+    public int rxpos;
 
     // METHOD DEFINITION SECTION
 
@@ -23,18 +26,38 @@ public class Ball {
     public Ball(int pXpos, int pYpos) {
         xpos = pXpos;
         ypos = pYpos;
-        dx =1;
-        dy =0;
-        width = 160;
-        height = 240;
+        dx =5;
+        dy =5;
+        width = 50;
+        height = 50;
         isAlive = true;
+        randomStart();
 
     } // constructor
 
+
+    public void randomStart(){
+        int randx = (int)(Math.random()*3) +1;
+        if (randx==1){
+            rxpos=150;
+        }
+        else if (randx==2) {
+            rxpos=450;
+        }
+        else {
+            rxpos=750;
+        }
+
+    }
+
+
     //The move method.  Everytime this is run (or "called") the hero's x position and y position change by dx and dy
     public void move() {
-        xpos = xpos + dx;
-        ypos = ypos + dy;
 
+
+        xpos = rxpos + dx;
+        ypos = 600 + dy;
+
+        hitbox= new Rectangle(xpos,ypos,width,height);
     }
 }

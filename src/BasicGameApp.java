@@ -72,9 +72,9 @@ public class BasicGameApp implements Runnable {
        
       //variable and objects
       //create (construct) the objects needed for the game and load up
-        ballPic = Toolkit.getDefaultToolkit().getImage("bron.png"); //load the picture
+        ballPic = Toolkit.getDefaultToolkit().getImage("ball.jpg"); //load the picture
         ball = new Ball(10,100);
-        hoopPic = Toolkit.getDefaultToolkit().getImage("hoop.webp"); //load the picture
+        hoopPic = Toolkit.getDefaultToolkit().getImage("hoop.png"); //load the picture
         hoop = new Hoop(10,100);
 
 
@@ -166,12 +166,12 @@ public class BasicGameApp implements Runnable {
 		g.clearRect(0, 0, WIDTH, HEIGHT);
 
       //draw the image of the bron
-        g.drawImage(ballPic,500,350,ball.width,ball.height,null);
-        g.drawImage(hoopPic,500,200,hoop.width,hoop.height,null);
+
+        g.drawImage(hoopPic,hoop.xpos,150,hoop.width,hoop.height,null);
 		g.drawImage(bronPic, 100, 500, bron.width, bron.height, null);
         g.drawImage(jordanPic,400,500,jordan.width,jordan.height,null);
         g.drawImage(kobePic,700,500,kobe.width, kobe.height, null);
-
+        g.drawImage(ballPic,ball.xpos,ball.ypos,ball.width,ball.height,null);
 
 		g.dispose();
 
