@@ -116,6 +116,7 @@ public class BasicGameApp implements Runnable {
 		bron.move();
         jordan.move();
         kobe.move();
+        bucket();
 
 	}
 	
@@ -172,9 +173,21 @@ public class BasicGameApp implements Runnable {
         g.drawImage(jordanPic,400,500,jordan.width,jordan.height,null);
         g.drawImage(kobePic,700,500,kobe.width, kobe.height, null);
         g.drawImage(ballPic,ball.xpos,ball.ypos,ball.width,ball.height,null);
+        g.drawRect(hoop.hitbox.x,hoop.hitbox.y,hoop.hitbox.width,hoop.hitbox.height);
 
 		g.dispose();
 
 		bufferStrategy.show();
 	}
+
+    public void bucket(){
+        if (ball.hitbox.intersects(hoop.hitbox)){
+
+
+        }
+    }
+
+
+
+
 }
