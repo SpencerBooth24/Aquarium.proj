@@ -71,23 +71,27 @@ public class BasicGameApp implements Runnable {
 	public BasicGameApp() {
       
       setUpGraphics();
-       
+        int randx = (int)(Math.random()*700);
+        int randy = (int)(Math.random()*500);
+
+
       //variable and objects
       //create (construct) the objects needed for the game and load up
         ballPic = Toolkit.getDefaultToolkit().getImage("ball.jpg"); //load the picture
-        ball = new Ball(10,100);
+        ball = new Ball(randx, randy);
         hoopPic = Toolkit.getDefaultToolkit().getImage("hoop.png"); //load the picture
         hoop = new Hoop(10,100);
 
 
 		bronPic = Toolkit.getDefaultToolkit().getImage("bron.png"); //load the picture
-		bron = new Lebron(10,100);
+		bron = new Lebron(100,500);
         jordanPic = Toolkit.getDefaultToolkit().getImage("jordan.png");
-        jordan = new Jordan(10,100);
+        jordan = new Jordan(400,500);
         kobePic = Toolkit.getDefaultToolkit().getImage("kobe.png");
-        kobe = new Kobe(10,100);
+        kobe = new Kobe(700,500);
         winScreen=Toolkit.getDefaultToolkit().getImage("Win.png");
         win= new Win(0,0);
+
 
 	}// BasicGameApp()
 
@@ -120,9 +124,13 @@ public class BasicGameApp implements Runnable {
         jordan.move();
         kobe.move();
 
+        if (ball.hitbox.intersects(bron.hitbox)||ball.hitbox.intersects(jordan.hitbox)||ball.hitbox.intersects(kobe.hitbox)){
+            ball.dx=-ball.dx;
+            ball.dy=-ball.dy;
+        }
+
        if (ball.hitbox.intersects(hoop.hitbox)){
            win.isAlive= true;
-
        }
 
 	}
@@ -176,12 +184,16 @@ public class BasicGameApp implements Runnable {
       //draw the image of the bron
 
         g.drawImage(hoopPic,hoop.xpos,150,hoop.width,hoop.height,null);
-		g.drawImage(bronPic, 100, 500, bron.width, bron.height, null);
-        g.drawImage(jordanPic,400,500,jordan.width,jordan.height,null);
-        g.drawImage(kobePic,700,500,kobe.width, kobe.height, null);
+		g.drawImage(bronPic, bron.xpos, bron.ypos, bron.width, bron.height, null);
+        g.drawImage(jordanPic,jordan.xpos,jordan.ypos,jordan.width,jordan.height,null);
+        g.drawImage(kobePic,kobe.xpos,kobe.ypos,kobe.width, kobe.height, null);
         g.drawImage(ballPic,ball.xpos,ball.ypos,ball.width,ball.height,null);
         g.drawRect(hoop.hitbox.x,hoop.hitbox.y,hoop.hitbox.width,hoop.hitbox.height);
-        g.drawImage(winScreen,0,0,1000,700,null);
+        g.drawRect(bron.hitbox.x,bron.hitbox.y,bron.hitbox.width,bron.hitbox.height);
+
+        if (win.isAlive==true){
+            g.drawImage(winScreen,0,0,1000,700,null);
+        }
 		g.dispose();
 
 		bufferStrategy.show();

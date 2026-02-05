@@ -14,6 +14,8 @@ public class Ball {
     public boolean isAlive;            //a boolean to denote if the hero is alive or dead.
     public Rectangle hitbox;
     public int rxpos;
+    public int randx;
+    public int randy;
 
     // METHOD DEFINITION SECTION
 
@@ -24,8 +26,8 @@ public class Ball {
     //This is a SECOND constructor that takes 3 parameters.  This allows us to specify the hero's name and position when we build it.
     // if you put in a String, an int and an int the program will use this constructor instead of the one above.
     public Ball(int pXpos, int pYpos) {
-        pXpos=rxpos;
-        pYpos=rxpos;
+        //pXpos=rxpos;
+       // pYpos=rxpos;
         xpos = pXpos;
         ypos = pYpos;
         dx =5;
@@ -39,17 +41,8 @@ public class Ball {
 
 
     public void randomStart(){
-        int randx = (int)(Math.random()*3) +1;
-        if (randx==1){
-            rxpos=150;
-        }
-        else if (randx==2) {
-            rxpos=450;
-        }
-        else {
-            rxpos=750;
-        }
-
+        randx = (int)(Math.random()*700);
+        randy = (int)(Math.random()*500);
     }
 
 
@@ -73,4 +66,8 @@ public class Ball {
 
         hitbox= new Rectangle(xpos,ypos,width,height);
     }
+
+
+
+
 }
