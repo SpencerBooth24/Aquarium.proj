@@ -44,6 +44,7 @@ public class BasicGameApp implements Runnable {
 	public Image bronPic;
     public Image jordanPic;
     public Image kobePic;
+    public Image winScreen;
 
    //Declare the objects used in the program
    //These are things that are made up of more than one variable type
@@ -52,6 +53,7 @@ public class BasicGameApp implements Runnable {
     private Lebron bron;
     private Jordan jordan;
     private Kobe kobe;
+    private Win win;
 
 
    // Main method definition
@@ -84,7 +86,8 @@ public class BasicGameApp implements Runnable {
         jordan = new Jordan(10,100);
         kobePic = Toolkit.getDefaultToolkit().getImage("kobe.png");
         kobe = new Kobe(10,100);
-
+        winScreen=Toolkit.getDefaultToolkit().getImage("Win.png");
+        win= new Win(0,0);
 
 	}// BasicGameApp()
 
@@ -116,7 +119,11 @@ public class BasicGameApp implements Runnable {
 		bron.move();
         jordan.move();
         kobe.move();
-        bucket();
+
+       if (ball.hitbox.intersects(hoop.hitbox)){
+           win.isAlive= true;
+
+       }
 
 	}
 	
@@ -174,18 +181,14 @@ public class BasicGameApp implements Runnable {
         g.drawImage(kobePic,700,500,kobe.width, kobe.height, null);
         g.drawImage(ballPic,ball.xpos,ball.ypos,ball.width,ball.height,null);
         g.drawRect(hoop.hitbox.x,hoop.hitbox.y,hoop.hitbox.width,hoop.hitbox.height);
-
+        g.drawImage(winScreen,0,0,1000,700,null);
 		g.dispose();
 
 		bufferStrategy.show();
+
 	}
 
-    public void bucket(){
-        if (ball.hitbox.intersects(hoop.hitbox)){
 
-
-        }
-    }
 
 
 
