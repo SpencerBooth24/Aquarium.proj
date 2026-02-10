@@ -54,6 +54,7 @@ public class BasicGameApp implements Runnable {
     private Jordan jordan;
     private Kobe kobe;
     private Win win;
+    public int randq;
 
 
    // Main method definition
@@ -78,7 +79,7 @@ public class BasicGameApp implements Runnable {
       //variable and objects
       //create (construct) the objects needed for the game and load up
         ballPic = Toolkit.getDefaultToolkit().getImage("ball.jpg"); //load the picture
-        ball = new Ball(randx, randy);
+        ball = new Ball(randx, randy, randq);
         hoopPic = Toolkit.getDefaultToolkit().getImage("hoop.png"); //load the picture
         hoop = new Hoop(10,100);
 
@@ -127,6 +128,7 @@ public class BasicGameApp implements Runnable {
         if (ball.hitbox.intersects(bron.hitbox)||ball.hitbox.intersects(jordan.hitbox)||ball.hitbox.intersects(kobe.hitbox)){
             ball.dx=-ball.dx;
             ball.dy=-ball.dy;
+            randq = (int)(Math.random()*10);
         }
 
        if (ball.hitbox.intersects(hoop.hitbox)){

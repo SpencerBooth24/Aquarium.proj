@@ -25,12 +25,12 @@ public class Ball {
 
     //This is a SECOND constructor that takes 3 parameters.  This allows us to specify the hero's name and position when we build it.
     // if you put in a String, an int and an int the program will use this constructor instead of the one above.
-    public Ball(int pXpos, int pYpos) {
+    public Ball(int pXpos, int pYpos, int pdx) {
         //pXpos=rxpos;
        // pYpos=rxpos;
         xpos = pXpos;
         ypos = pYpos;
-        dx =5;
+        dx = pdx;
         dy =5;
         width = 50;
         height = 50;
@@ -50,15 +50,19 @@ public class Ball {
     public void move() {
         if (xpos>=1000){//make asteroid wrap around screen
             xpos=1;
+
         }
         if (xpos<=0){
             xpos=999;
+
         }
         if (ypos>=700){
             ypos=1;
+
         }
         if (ypos<=0){
             ypos=699;
+
         }
 
         xpos = xpos +dx;
