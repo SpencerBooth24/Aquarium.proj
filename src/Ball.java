@@ -41,8 +41,8 @@ public class Ball {
 
 
     public void randomStart(){
-        randx = (int)(Math.random()*700);
-        randy = (int)(Math.random()*500);
+        randx = (int)(Math.random()*900);
+        randy = (int)(Math.random()*300);
     }
 
 
