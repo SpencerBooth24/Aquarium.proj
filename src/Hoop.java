@@ -53,6 +53,6 @@ public class Hoop {
         xpos = xpos + dx;
         ypos = ypos + dy;
 
-        hitbox= new Rectangle(xpos+50,ypos+115,width-100,height-150);
+        hitbox= new Rectangle(xpos+50,ypos+115,width-100,height-150); //make hitbox
     }
 }

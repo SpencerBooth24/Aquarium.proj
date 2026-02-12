@@ -55,6 +55,7 @@ public class BasicGameApp implements Runnable {
     private Kobe kobe;
     private Win win;
     public int randq;
+    public int randw;
 
 
    // Main method definition
@@ -79,7 +80,7 @@ public class BasicGameApp implements Runnable {
       //variable and objects
       //create (construct) the objects needed for the game and load up
         ballPic = Toolkit.getDefaultToolkit().getImage("ball.jpg"); //load the picture
-        ball = new Ball(randx, randy, randq);
+        ball = new Ball(randx, randy, randq+5, randw+5);
         hoopPic = Toolkit.getDefaultToolkit().getImage("hoop.png"); //load the picture
         hoop = new Hoop(10,100);
 
@@ -128,11 +129,13 @@ public class BasicGameApp implements Runnable {
         if (ball.hitbox.intersects(bron.hitbox)||ball.hitbox.intersects(jordan.hitbox)||ball.hitbox.intersects(kobe.hitbox)){
             ball.dx=-ball.dx;
             ball.dy=-ball.dy;
-            randq = (int)(Math.random()*10);
+            randq = (int)(Math.random()*10); //ball intersects with characters
+            randw = (int)(Math.random()*10);
         }
 
+
        if (ball.hitbox.intersects(hoop.hitbox)){
-           win.isAlive= true;
+           win.isAlive= true; //winscreen
        }
 
 	}
@@ -183,7 +186,7 @@ public class BasicGameApp implements Runnable {
 		Graphics2D g = (Graphics2D) bufferStrategy.getDrawGraphics();
 		g.clearRect(0, 0, WIDTH, HEIGHT);
 
-      //draw the image of the bron
+      //draw the image of the characters
 
         g.drawImage(hoopPic,hoop.xpos,150,hoop.width,hoop.height,null);
 		g.drawImage(bronPic, bron.xpos, bron.ypos, bron.width, bron.height, null);
@@ -194,7 +197,7 @@ public class BasicGameApp implements Runnable {
         g.drawRect(bron.hitbox.x,bron.hitbox.y,bron.hitbox.width,bron.hitbox.height);
 
         if (win.isAlive==true){
-            g.drawImage(winScreen,0,0,1000,700,null);
+            g.drawImage(winScreen,0,0,1000,700,null); //winscreen
         }
 		g.dispose();
 
